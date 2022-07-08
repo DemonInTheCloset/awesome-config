@@ -122,6 +122,12 @@ local globalkeys = gears.table.join(
 	end, { description = 'lua execute prompt', group = 'awesome' }),
 
 	-- Originally SXHKD
+	awful.key({}, 'Print', function()
+		awful.spawn 'flameshot full'
+	end, { description = 'take a screenshot with flameshot', group = 'launcher' }),
+	awful.key({ 'Shift' }, 'Print', function()
+		awful.spawn 'flameshot gui'
+	end, { description = 'take a screenshot with flameshot (select zone)', group = 'launcher' }),
 	awful.key({}, 'XF86AudioRaiseVolume', function()
 		awful.spawn 'pamixer --increase 5'
 		-- TODO: Notify
