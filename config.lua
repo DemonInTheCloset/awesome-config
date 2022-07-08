@@ -1,7 +1,7 @@
 local awful = require 'awful'
 local gears = require 'gears'
 
-local terminal = 'kitty'
+local terminal = 'wezterm'
 local editor = os.getenv 'EDITOR' or 'nano'
 local editor_cmd = terminal .. ' -e ' .. editor
 local icon_theme = 'Papirus-Dark'
