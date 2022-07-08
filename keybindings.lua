@@ -162,11 +162,11 @@ local globalkeys = gears.table.join(
 	end, { description = 'open a password selection', group = 'launcher' }),
 	-- SXHKD programs
 	awful.key({ modkey }, 'Return', function()
-		awful.spawn(config.terminal .. ' tmux new -As default')
-	end, { description = 'open a terminal with tmux', group = 'launcher' }),
-	awful.key({ modkey, 'Shift' }, 'Return', function()
 		awful.spawn(config.terminal)
 	end, { description = 'open a terminal', group = 'launcher' }),
+	awful.key({ modkey, 'Shift' }, 'Return', function()
+		awful.spawn(config.terminal .. ' tmux new -As default')
+	end, { description = 'open a terminal with tmux', group = 'launcher' }),
 	awful.key({ modkey }, 'n', function()
 		awful.spawn.with_shell 'nvim-qt "$HOME"'
 	end, { description = 'open nvim-qt at $HOME', group = 'launcher' }),
