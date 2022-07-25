@@ -3,7 +3,12 @@ local awful = require 'awful'
 local gears = require 'gears'
 local config = require 'config'
 local modkey = config.modkey
-local menubar = require 'menubar'
+-- local menubar = require 'menubar'
+
+-- Get notification helper functions
+local notifications = require 'notifications'
+local notify_audio = notifications.notify_audio
+local notify_brightness = notifications.notify_brightness
 
 -- Glocal Keybindings
 local globalkeys = gears.table.join(
@@ -129,16 +134,13 @@ local globalkeys = gears.table.join(
 		awful.spawn 'flameshot gui'
 	end, { description = 'take a screenshot with flameshot (select zone)', group = 'launcher' }),
 	awful.key({}, 'XF86AudioRaiseVolume', function()
-		awful.spawn 'pamixer --increase 5'
-		-- TODO: Notify
+		awful.spawn.easy_async('pamixer --increase 5', notify_audio)
 	end, { description = 'raise volume', group = 'audio' }),
 	awful.key({}, 'XF86AudioLowerVolume', function()
-		awful.spawn 'pamixer --decrease 5'
-		-- TODO: Notify
+		awful.spawn.easy_async('pamixer --decrease 5', notify_audio)
 	end, { description = 'lower volume', group = 'audio' }),
 	awful.key({}, 'XF86AudioMute', function()
-		awful.spawn 'pamixer --toggle-mute'
-		-- TODO: Notify
+		awful.spawn.easy_async('pamixer --toggle-mute', notify_audio)
 	end, { description = 'mute volume', group = 'audio' }),
 	awful.key({ modkey }, 'F10', function()
 		awful.spawn 'select-sink'
@@ -147,12 +149,10 @@ local globalkeys = gears.table.join(
 		awful.spawn 'select-source'
 	end, { description = 'Select default audio source', group = 'audio' }),
 	awful.key({}, 'XF86MonBrightnessUp', function()
-		awful.spawn 'xbacklight -perceived -inc 5'
-		-- TODO: Notify
+		awful.spawn.easy_async('xbacklight -perceived -inc 5', notify_brightness)
 	end, { description = 'increase monitor brightness', group = 'brightness' }),
 	awful.key({}, 'XF86MonBrightnessDown', function()
-		awful.spawn 'xbacklight -perceived -dec 5'
-		-- TODO: Notify
+		awful.spawn.easy_async('xbacklight -perceived -dec 5', notify_brightness)
 	end, { description = 'decrease monitor brightness', group = 'brightness' }),
 	awful.key({}, 'Print', function()
 		awful.spawn 'flameshot full'
