@@ -174,8 +174,8 @@ local globalkeys = gears.table.join(
 		awful.spawn(config.terminal .. ' tmux new -As default')
 	end, { description = 'open a terminal with tmux', group = 'launcher' }),
 	awful.key({ modkey }, 'n', function()
-		awful.spawn.with_shell 'nvim-qt "$HOME"'
-	end, { description = 'open nvim-qt at $HOME', group = 'launcher' }),
+		awful.spawn.with_shell 'neovide "$HOME"'
+	end, { description = 'open neovide at $HOME', group = 'launcher' }),
 	awful.key({ modkey }, 'F1', function()
 		awful.spawn 'qbpm choose --target auto'
 	end, { description = 'open a qutebrowser window (choose profile) ', group = 'launcher' }),
