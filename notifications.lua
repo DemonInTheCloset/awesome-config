@@ -59,7 +59,7 @@ local function notify_brightness()
 		local brightness = stdout:match '%d+'
 
 		brightness_notify_id =
-			notify_or_replace(brightness_notify_id, { title = 'Brightness: ' .. brightness .. '%' })
+			notify_or_replace(brightness_notify_id, { text = 'Brightness: ' .. brightness .. '%' })
 	end)
 end
 
