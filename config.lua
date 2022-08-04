@@ -1,5 +1,7 @@
 local awful = require 'awful'
 local gears = require 'gears'
+local xresources = require 'beautiful.xresources'
+local dpi = xresources.apply_dpi
 
 local terminal = 'wezterm'
 local editor = os.getenv 'EDITOR' or 'nano'
@@ -23,7 +25,7 @@ return {
 	icon_theme = icon_theme,
 	icon_formats = { 'svg', 'png' },
 	shape = function(cr, w, h)
-		gears.shape.rounded_rect(cr, w, h, 8)
+		gears.shape.rounded_rect(cr, w, h, dpi(8))
 	end,
 	fs_shape = gears.shape.rectangle,
 	layouts = {
