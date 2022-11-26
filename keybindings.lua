@@ -200,10 +200,10 @@ local globalkeys = gears.table.join(
 		awful.spawn.with_shell 'mpv --profile=1080p "$(xclip -o -selection clipboard)"'
 	end, { description = 'open mpv with the url in the clipboard', group = 'launcher' }),
 	awful.key({ modkey, 'Shift' }, 's', function()
-		awful.spawn "dmenu-prompt 'Shutdown?' 'sudo poweroff'"
+		awful.spawn "dmenu-confirm 'Do you want to Shutdown?' 'sudo poweroff'"
 	end, { description = 'prompt for shutdown', group = 'exit' }),
 	awful.key({ modkey, 'Shift' }, 'p', function()
-		awful.spawn "dmenu-prompt 'Restart?' 'sudo reboot'"
+		awful.spawn "dmenu-confirm 'Do you want to Restart?' 'sudo reboot'"
 	end, { description = 'prompt for restart', group = 'exit' })
 )
 
