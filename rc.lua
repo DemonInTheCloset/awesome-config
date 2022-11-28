@@ -258,9 +258,11 @@ awful.rules.rules = {
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal('manage', function(c)
-	if c.fullscreen then
+	if c.fullscreen or #c.screen.clients == 1 then
+		c.border_width = 0
 		c.shape = config.fs_shape
 	else
+		c.border_width = beautiful.border_width
 		c.shape = config.shape
 	end
 	-- Set the windows at the slave,
@@ -274,9 +276,11 @@ client.connect_signal('manage', function(c)
 end)
 
 client.connect_signal('property::size', function(c)
-	if c.fullscreen then
+	if c.fullscreen or #c.screen.clients == 1 then
+		c.border_width = 0
 		c.shape = config.fs_shape
 	else
+		c.border_width = beautiful.border_width
 		c.shape = config.shape
 	end
 end)
