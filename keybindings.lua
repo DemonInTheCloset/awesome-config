@@ -154,12 +154,6 @@ local globalkeys = gears.table.join(
 	awful.key({}, 'XF86MonBrightnessDown', function()
 		awful.spawn.easy_async('xbacklight -perceived -dec 5', notify_brightness)
 	end, { description = 'decrease monitor brightness', group = 'brightness' }),
-	awful.key({}, 'Print', function()
-		awful.spawn 'flameshot full'
-	end, { description = 'take a screenshot', group = 'launcher' }),
-	awful.key({ 'Shift' }, 'Print', function()
-		awful.spawn 'flameshot gui'
-	end, { description = 'take a screenshot (select region)', group = 'launcher' }),
 	awful.key({ modkey }, 'd', function()
 		awful.spawn 'rofi -modi drun,run -show drun'
 	end, { description = 'Run program (rofi)', group = 'launcher' }),
