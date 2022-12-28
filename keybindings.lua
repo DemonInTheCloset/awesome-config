@@ -134,13 +134,13 @@ local globalkeys = gears.table.join(
 		awful.spawn 'flameshot gui'
 	end, { description = 'take a screenshot with flameshot (select zone)', group = 'launcher' }),
 	awful.key({}, 'XF86AudioRaiseVolume', function()
-		awful.spawn.easy_async('pamixer --increase 5', notify_audio)
+		awful.spawn.easy_async('wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && audio-notify', notify_audio)
 	end, { description = 'raise volume', group = 'audio' }),
 	awful.key({}, 'XF86AudioLowerVolume', function()
-		awful.spawn.easy_async('pamixer --decrease 5', notify_audio)
+		awful.spawn.easy_async('wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && audio-notify', notify_audio)
 	end, { description = 'lower volume', group = 'audio' }),
 	awful.key({}, 'XF86AudioMute', function()
-		awful.spawn.easy_async('pamixer --toggle-mute', notify_audio)
+		awful.spawn.easy_async('wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && audio-notify', notify_audio)
 	end, { description = 'mute volume', group = 'audio' }),
 	awful.key({ modkey }, 'F10', function()
 		awful.spawn 'select-sink'
